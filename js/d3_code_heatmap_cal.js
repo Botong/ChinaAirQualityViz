@@ -127,10 +127,28 @@
                     .range(["#F7CBCB", "#F99E9E", "#F35151","#F35151", "#CE0E0E", "#CE0E0E", "#8E0F0F","#8E0F0F","#8E0F0F", "#170404", "#170404", "#170404", "#170404"])
                     .domain([0,500]);
 
+                var tip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function(d) {
+                    return "<strong>" + d.value + "</strong>"
+                    // + "\t"
+                    // + year.values + "</strong><br/><span style='color:#fff'>" + value.values + " députés élus"
+                    ;
+                  })
+
                 rect.filter(function (d) {
                         return d in nestedData;
                     })
-                    .on('mouseover', dispatch._hover)
+                    //.on('mouseover', dispatch._hover)
+                    .on('mouseover',tip.show)
+                    .on('mouseout',tip.hide)
+                    // .on("mouseover", function(d) {
+                    //      d3.select(d).style("visibility","visible")
+                    //  })
+                    // .on("mouseout", function(d){
+                    //      d3.select(d).style("visibility","hidden")
+                    //  })
                     .transition()
                     .delay(function(d, i, j) {
                         return i*10 + j * 100;

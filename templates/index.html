@@ -8,7 +8,6 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:100,300,900' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
@@ -24,23 +23,24 @@
     </header>
     <section id="heatmap"></section>
   </article>
-
-  <form>
-     <select id="index-dropdown" name="index-dropdown">
-         <option value="pm25" selected="selected"> PM2.5 </option>
-         <option value="pm10">PM10 </option>
-         <option value="o3">O3 </option>
-         <option value="no2">NO2 </option>
-         <option value="so2">SO2 </option>
-         <option value="co">CO </option>
-     </select>
-     <select id="city-dropdown" name="city-dropdown">
-         <option value="Beijing" selected="selected"> Beijing </option>
-         <option value="Shanghai">Shanghai </option>
-         <option value="Chongqing">Chongqing </option>
-         <option value="Tianjin">Tianjin </option>
-     </select>
-  </form>
+  <div id="heatmap_dropdown">
+      <form>
+         <select id="index-dropdown" name="index-dropdown">
+             <option value="pm25" selected="selected"> PM2.5 </option>
+             <option value="pm10">PM10 </option>
+             <option value="o3">O3 </option>
+             <option value="no2">NO2 </option>
+             <option value="so2">SO2 </option>
+             <option value="co">CO </option>
+         </select>
+         <select id="city-dropdown" name="city-dropdown">
+             <option value="Beijing" selected="selected"> Beijing </option>
+             <option value="Shanghai">Shanghai </option>
+             <option value="Chongqing">Chongqing </option>
+             <option value="Tianjin">Tianjin </option>
+         </select>
+      </form>
+  </div>
   <script>
   // *****************************************
   // render chart
@@ -97,6 +97,7 @@
               d3.select('#heatmap')
                   .datum(nestedData)
                   .call(heatChart);
+
           });
       }
   }());
