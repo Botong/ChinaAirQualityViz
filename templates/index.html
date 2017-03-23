@@ -19,37 +19,39 @@
 <body class="sea">
   <iframe width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
   <article>
-    <header>
-      <span id="info">info</span>
-    </header>
     <h2> Overview of the dataset </h2>
     <p> The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). </p>
 
     <h2> Analysis </h2>
     <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p>
+    <h2> Where is the pollution? </h2>
+    <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
+    <br>
+    To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
     <section id="heatmap"></section>
   </article>
 
- <h2> Where is the pollution? </h2>
- <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
- <br>
- To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
-  <form>
-     <select id="index-dropdown" name="index-dropdown">
-         <option value="pm25" selected="selected"> PM2.5 </option>
-         <option value="pm10">PM10 </option>
-         <option value="o3">O3 </option>
-         <option value="no2">NO2 </option>
-         <option value="so2">SO2 </option>
-         <option value="co">CO </option>
-     </select>
-     <select id="city-dropdown" name="city-dropdown">
-         <option value="Beijing" selected="selected"> Beijing </option>
-         <option value="Shanghai">Shanghai </option>
-         <option value="Chongqing">Chongqing </option>
-         <option value="Tianjin">Tianjin </option>
-     </select>
-  </form>
+ <div id="heatmap_dropdown">
+    <span>
+      <form>
+         <select id="index-dropdown" name="index-dropdown">
+             <option value="pm25" selected="selected"> PM2.5 </option>
+             <option value="pm10">PM10 </option>
+             <option value="o3">O3 </option>
+             <option value="no2">NO2 </option>
+             <option value="so2">SO2 </option>
+             <option value="co">CO </option>
+         </select>
+         <select id="city-dropdown" name="city-dropdown">
+             <option value="Beijing" selected="selected"> Beijing </option>
+             <option value="Shanghai">Shanghai </option>
+             <option value="Chongqing">Chongqing </option>
+             <option value="Tianjin">Tianjin </option>
+         </select>
+      </form>
+    </span>
+  </div>
+
   <script>
   // *****************************************
   // render chart

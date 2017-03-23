@@ -39,6 +39,7 @@ header {
 }
 #heatmap {
   padding-top: 30px;
+  padding-left: 50px;
 }
 svg text {
   font-size: 11px;
@@ -49,8 +50,12 @@ section.heatmap{
     float: left;
 }
 #heatmap_dropdown{
-    float: right;
     position: relative;
-    right:200px;
-    bottom: 500px;
+    padding-left:500px;
+    bottom: 570px;
+    background-color: lightblue;
+}
+#pollution {
+    background-color: #83CEE9;
+    color: black;
 }

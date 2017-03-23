@@ -134,7 +134,23 @@
                   .offset([-10, 0])
                   .html(function(d) {
                     //dataya[d]
-                    return "<strong>" + "City:" + $( '#city-dropdown' ).select()[0].value + "<br>" + $( '#index-dropdown' ).select()[0].value + ":" + dataya[d] + "<br>" + "Date:" + d.getFullYear() + '-' + d.getMonth() + '-' + d.getDay() + "</strong>";
+                    var status = "";
+                    if (dataya[d] < 50) {
+                        status = "healthy";
+                    } else if (dataya[d] > 50 && dataya[d] <= 100) {
+                        status = "moderate";
+                    } else if (dataya[d] > 100 && dataya[d] <= 150) {
+                        status = "Unhealthy for Sensitive Groups";
+                    } else if (dataya[d] > 150 && dataya[d] <= 200) {
+                        status = "Unhealthy";
+                    } else if (dataya[d] > 200 && dataya[d] <= 300) {
+                        status = "Very Unhealthy";
+                    } else {
+                        status = "Hazardous";
+                    }
+                    var month = parseInt(d.getMonth())+1;
+                    return "<div id = 'pollution'>" + "City:" + $( '#city-dropdown' ).select()[0].value + "<br>"  + status +"<br>" + $( '#index-dropdown' ).select()[0].value + ":" + dataya[d] + "<br>" + "Date:"
+                    + d.getFullYear() + '-' + month + '-' + d.getDate() + "</div>";
                   })
 
                 rect.filter(function (d) {
