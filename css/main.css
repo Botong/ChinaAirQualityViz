@@ -1,0 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+body {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
+    line-height: 1.5;
+  font-weight: 400;
+}
+.day {
+  fill: #fff;
+  stroke: black;
+  stroke-width: .5px;
+}
+.month {
+  fill: none;
+  stroke: white;
+  stroke-width: 1px;
+}
+.year-title {
+  font-size: 18px;
+  letter-spacing: 10px;
+  fill: #00B0DD;
+}
+#info {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  font-size: 13px;
+}
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 33px;
+  width: 100%;
+  background: #ffff00;
+  opacity: 0.9;
+  z-index: 22;
+  background: #00B0DD;
+  color: white;
+}
+#heatmap {
+  padding-top: 30px;
+}
+svg text {
+  font-size: 11px;
+  text-transform: uppercase;
+  fill: #00B0DD;
+}
+div.dropdown, div.heatmapdiv { display: inline; }

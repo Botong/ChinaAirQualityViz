@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A sea of...pollution - How is the air pollution in large cities in China?</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/e.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="../js/jquery-3.1.1.min.js"></script>
+  <script> d3.eesur = {}; //namespace  </script>
+  <script src="../js/d3_code_heatmap_cal.js"></script>
+</head>
+<body class="sea">
+  <iframe width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+  <article>
+    <header>
+      <span id="info">info</span>
+    </header>
+    <section id="heatmap"></section>
+  </article>
+
+  <form>
+     <select id="index-dropdown" name="index-dropdown">
+         <option value="pm25" selected="selected"> PM2.5 </option>
+         <option value="pm10">PM10 </option>
+         <option value="o3">O3 </option>
+         <option value="no2">NO2 </option>
+         <option value="so2">SO2 </option>
+         <option value="co">CO </option>
+     </select>
+     <select id="city-dropdown" name="city-dropdown">
+         <option value="Beijing" selected="selected"> Beijing </option>
+         <option value="Shanghai">Shanghai </option>
+         <option value="Chongqing">Chongqing </option>
+         <option value="Tianjin">Tianjin </option>
+     </select>
+  </form>
+  <script>
+  // *****************************************
+  // render chart
+  // *****************************************
+  (function() {
+      'use strict';
+
+      var nestedData;
+      var parseDate = d3.time.format('%Y-%m-%d').parse;
+      // create chart
+      var heatChart = d3.eesur.heatmap()
+          .height(500)
+          .startYear('2014')
+          .endYear('2017')
+          .on('_hover', function (d, i) {
+              var f = d3.time.format('%B %d, %Y');
+              d3.select('#info')
+                  .text(function () {
+                      return 'date: ' + f(d) + ' | value: ' + nestedData[d];
+                  });
+          });
+      var city = "Beijing";
+      var index = "pm25";
+      var index_select = $( '#index-dropdown' );
+      var city_select = $( '#city-dropdown' );
+      index_select.change( function() {
+        index = $( this ).val();
+        mapData();
+      });
+      city_select.change( function() {
+        city = $( this ).val();
+        mapData();
+      });
+      mapData();
+      function mapData() {
+          // apply after nesting data
+          d3.json('../file/bigcity.json', function(error, data) {
+              if (error) return console.warn(error);
+              nestedData = d3.nest()
+                  .key(function (d) {
+                      return parseDate(d.date);
+                  })
+                  .rollup(function (n) {
+                      n = n[0]
+                      if("undefined" === typeof n.value)
+                          return 0;
+                      if("undefined" === typeof n.value[city])
+                          return 0;
+                      return n.value[city][index];
+                  })
+                  .map(data);
+              d3.selectAll("svg").remove();
+              // render chart
+              d3.select('#heatmap')
+                  .datum(nestedData)
+                  .call(heatChart);
+          });
+      }
+  }());
+
+  d3.select(self.frameElement).style('height', '800px');
+  </script>
+
+  <div id="stats">
+      <div>connecting...</div>
+  </div>
+  <div id="viz">
+      <div class="title">
+          <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
+      </div>
+      <div id="sea">
+          <div class="title">
+          <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
+          </div>
+      </div>
+      <div id="mode">
+          <a href="#" id="multi" class="fs1" aria-hidden="true" data-icon="&#xe002;"><span>multi wave</span></a>
+          <a href="#" id="single" class="fs1" aria-hidden="true" data-icon="&#xe001;"><span>single wave</span></a>
+      </div>
+      <div id="statuses"></div>
+      <div id="dragme">
+          <div id="gauge"><span>Drag me</span></div>
+      </div>
+  </div>
+  <script src="../js/c.js"></script>
+</body>
+
+</html>
