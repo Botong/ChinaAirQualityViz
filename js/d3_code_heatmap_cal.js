@@ -4,7 +4,8 @@
 // *****************************************
 // reusable heat-map chart
 // *****************************************
-
+    var parseDate = d3.time.format('%Y-%m-%d').parse;
+    var dataya;
     d3.eesur.heatmap = function module() {
 
         // input vars for getter setters
@@ -19,6 +20,7 @@
 
         function exports(_selection) {
             _selection.each(function(nestedData) {
+                dataya = nestedData;
 
                 var margin = {top: 20, right: 30, bottom: 20, left: 20};
                 // update width and height to use margins for axis
@@ -131,10 +133,8 @@
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
                   .html(function(d) {
-                    return "<strong>" + d.value + "</strong>"
-                    // + "\t"
-                    // + year.values + "</strong><br/><span style='color:#fff'>" + value.values + " députés élus"
-                    ;
+                    //dataya[d]
+                    return "<strong>" + "City:" + $( '#city-dropdown' ).select()[0].value + "<br>" + $( '#index-dropdown' ).select()[0].value + ":" + dataya[d] + "<br>" + "Date:" + d.getFullYear() + '-' + d.getMonth() + '-' + d.getDay() + "</strong>";
                   })
 
                 rect.filter(function (d) {
@@ -143,12 +143,6 @@
                     //.on('mouseover', dispatch._hover)
                     .on('mouseover',tip.show)
                     .on('mouseout',tip.hide)
-                    // .on("mouseover", function(d) {
-                    //      d3.select(d).style("visibility","visible")
-                    //  })
-                    // .on("mouseout", function(d){
-                    //      d3.select(d).style("visibility","hidden")
-                    //  })
                     .transition()
                     .delay(function(d, i, j) {
                         return i*10 + j * 100;
@@ -156,6 +150,7 @@
                     .style('fill', function (d) {
                         return color(nestedData[d]);
                     });
+                svg.call(tip)
             });
         }
 

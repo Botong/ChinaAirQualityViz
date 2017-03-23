@@ -12,7 +12,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
   <script src="../js/jquery-3.1.1.min.js"></script>
-  <script src="../js/d3-tip.js"></script>
   <script> d3.eesur = {}; //namespace  </script>
   <script src="../js/d3_code_heatmap_cal.js"></script>
 </head>
@@ -22,13 +21,33 @@
     <header>
       <span id="info">info</span>
     </header>
-    <h2> Overview of the dataset </h2>
+    <h2> Overview of the dataset </h2>   
     <p> The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). </p>
 
-    <h2> Analysis </h2>
-    <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p>
+    <h2> Analysis </h2>   
+    <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p> 
     <section id="heatmap"></section>
   </article>
+<<<<<<< HEAD
+  <div id="heatmap_dropdown">
+      <form>
+         <select id="index-dropdown" name="index-dropdown">
+             <option value="pm25" selected="selected"> PM2.5 </option>
+             <option value="pm10">PM10 </option>
+             <option value="o3">O3 </option>
+             <option value="no2">NO2 </option>
+             <option value="so2">SO2 </option>
+             <option value="co">CO </option>
+         </select>
+         <select id="city-dropdown" name="city-dropdown">
+             <option value="Beijing" selected="selected"> Beijing </option>
+             <option value="Shanghai">Shanghai </option>
+             <option value="Chongqing">Chongqing </option>
+             <option value="Tianjin">Tianjin </option>
+         </select>
+      </form>
+  </div>
+=======
 
  <h2> Where is the pollution? </h2>
  <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
@@ -50,6 +69,7 @@
          <option value="Tianjin">Tianjin </option>
      </select>
   </form>
+>>>>>>> 935713ba5db425b2ca19758d75265a3bd8141a46
   <script>
   // *****************************************
   // render chart
@@ -101,8 +121,7 @@
                       return n.value[city][index];
                   })
                   .map(data);
-              d3.select(".chart").remove();
-
+              d3.selectAll("svg").remove();
               // render chart
               d3.select('#heatmap')
                   .datum(nestedData)
@@ -119,8 +138,8 @@
       <div>connecting...</div>
   </div>
 
-<h2> What is the major source of pollution? </h2>
-<p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
+<h2> What is the major source of pollution? </h2> 
+<p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).   
 <br>
 We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
 
@@ -146,35 +165,35 @@ We found that the pollution of PM2.5 is more serious than other pollution source
 
   <h2> What time is the air pollution more serious?</h2>
 
-  <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
-  <br>
+  <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph. 
+  <br> 
   We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference. </p>
 
-  <h2> Data quality </h2>
+  <h2> Data quality </h2>   
   <h2> Accountability </h2>
   <p> The dataset is from the <a href="http://aqi.cga.harvard.edu/china/about/"> Air Quality Index Archive </a>, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and COfor every 3 hours. Researchers in Harvard University acquired data from different sources, such as the NASA Ozone and Air Quality website, The NUAMP website, and The Aqicn.org website, and then merged the data together to be a compact dataset.The dataset is for academic, non-commercial use only. </p>
 
-  <h2> Completeness </h2>
+  <h2> Completeness </h2>   
   <p> The data isn’t complete. As we can see in the following picture, after plotting pollutions on each day, we found that data of some days is missing. </p>
    <img src="img/pic1.png" >
-    Picture1: pm 2.5 values in 2014
+    Picture1: pm 2.5 values in 2014   
   <p> Not only some days are missing in the dataset, but we also found that within thedataset, some datapoints have missing value itself. For example, as shown in Table 1, after list all values of PM10 by its frequency, we found there are 17 missing values in PM10.  </p>
   <img src="img/tab1.png" >
-Table 1: the 7 smallest values in PM10.
+Table 1: the 7 smallest values in PM10. 
 
-<h2> Coherence </h2>
+<h2> Coherence </h2> 
 
-<p> We assume, if the data is coherent, then different pollutions should be strongly related to each other. Thus, we regressed pm2.5 on pm10. We found their correlation reached the level of statistically significant, as shown in Table 2. For this reason, we assured that the data is coherent. </p>
+<p> We assume, if the data is coherent, then different pollutions should be strongly related to each other. Thus, we regressed pm2.5 on pm10. We found their correlation reached the level of statistically significant, as shown in Table 2. For this reason, we assured that the data is coherent. </p> 
 
 <img src="img/tab2.png" >
- Table 2: regression of pm2.5 and pm10
+ Table 2: regression of pm2.5 and pm10   
 
- <h2> Correctness </h2>
+ <h2> Correctness </h2> 
  <p> We first looked at the distribution of pm2.5, and identified the range is from 0 to 600. The range is consistence with pm2.5 data from other sources. We also randomly sampled several days from the data set, and compared the values with other datasets. We found the values are close to each other. </p>
  <img src="img/pic2.png" >
- Picture 2: the distribution of pm2.5.
- <img src="img/pic3.png" >
-Picture 3: boxplot of pm2.5.
+ Picture 2: the distribution of pm2.5. 
+ <img src="img/pic3.png" >  
+Picture 3: boxplot of pm2.5.   
 <p> Finally, we draw a boxplot of pm2.5, we found there is an outliner, which has value 695. Although the value is high, we still decided to keep the value, because we found there were new articles mentioned in Jan 2017 the concentration of pm2.5 was higher than 1000, which means it’s possible that the concentration of pm2.5 was so higher under some conditions.    </p>
 </body>
 

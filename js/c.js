@@ -1,9 +1,9 @@
-var HOST="localhost",
-	PORT="8080";
+var HOST="china-airquality.appspot.com",
+	PORT="80";
 var TOKEN="bca0d49923fd0e45662f7007f75df96c8abc14e6";
 
 function isCanvasSupported() {
-	var elem = document.createElement('canvas'); 
+	var elem = document.createElement('canvas');
 	return !!(elem.getContext && elem.getContext('2d'));
 }
 var stats=d3.select("#stats");
@@ -44,7 +44,7 @@ function aSeaOfTweets(){
 	var mousedown=false;
 
 
-	var viz=d3.select("#viz");		
+	var viz=d3.select("#viz");
 
 	var width=window.innerWidth,
 		height=viz.node().offsetHeight-10;
@@ -61,7 +61,7 @@ function aSeaOfTweets(){
 			.attr("height",height);
 
 	createGradients();
-		
+
 
 	var grid=svg.append("g")
 				.attr("id","grid");
@@ -121,7 +121,7 @@ function aSeaOfTweets(){
 	tmp_time_scale.domain([past,now]);
 	tmp_reverse_scale.rangeRound([past,now]);
 
-	
+
 
 	var to=null;
 	window.onresize = function(event) {
@@ -131,7 +131,7 @@ function aSeaOfTweets(){
 				clearTimeout(to);
 			}
 			to=setTimeout(function(){
-				
+
 				var old_width=width;
 
 				if(Math.abs(old_width - window.innerWidth)<20)
@@ -160,7 +160,7 @@ function aSeaOfTweets(){
 				updateGrid();
 
 			},100);
-			
+
 
 	}
 
@@ -168,7 +168,7 @@ function aSeaOfTweets(){
 		var to="#003482";
 		var gradients = svg.append("svg:defs");
 		topics.forEach(function(from){
-			
+
 			console.log(from);
 			var g=gradients.append("svg:linearGradient")
 				    .attr("id", "g_"+from)
@@ -176,7 +176,7 @@ function aSeaOfTweets(){
 				    .attr("y1", "20%")
 				    .attr("x2", "0%")
 				    .attr("y2", "100%")
-				   
+
 
 			g.append("svg:stop")
 			    .attr("offset", "0%")
@@ -216,7 +216,7 @@ function aSeaOfTweets(){
 				return;
 			}
 		}
-		
+
 		var ys=[],
 			tmp_tweets={};
 
@@ -237,7 +237,7 @@ function aSeaOfTweets(){
 		tweets=d3.values(tmp_tweets);
 
 		tweets.forEach(function(d,i){
-			
+
 			var y=y=topics.indexOf(d.c)*row_distance,
 				r=radius_scale(d.f);
 
@@ -268,7 +268,7 @@ function aSeaOfTweets(){
 				.append("div")
 				.attr("class","status")
 
-		
+
 		__statuses.exit().remove();
 
 		statuses.selectAll("div.status")
@@ -297,7 +297,7 @@ function aSeaOfTweets(){
 				.style("top",function(d){
 					return d.__y+"px"
 				})
-					
+
 	}
 	function releaseBlocked() {
 		mousedown=false;
@@ -318,7 +318,7 @@ function aSeaOfTweets(){
 	}
 	function dragGauge(coord){
 		if(true) {
-			
+
 
 			var ot=tmp_reverse_scale(coord[0]),
 				found=[],
@@ -349,14 +349,14 @@ function aSeaOfTweets(){
 			 		})
 			 		.select("circle.center")
 			 		.attr("r",2)
-			 	
+
 			 	tweets.selectAll("g.tweet")
 			 		.filter(function(d){
 			 			return found.indexOf(d)>-1
 			 		})
 			 		.select("circle.center")
-			 		.attr("r",20)	
-			}	
+			 		.attr("r",20)
+			}
 		}
 	}
 	function addGauge() {
@@ -371,7 +371,7 @@ function aSeaOfTweets(){
 					}
 				})
 				.style("left",(width/2)+"px");
-		
+
 		gauge.on("mousedown",function(){
 			d3.event.preventDefault();
 			mousedown=true;
@@ -381,7 +381,7 @@ function aSeaOfTweets(){
 		}).on("mouseup",function(){
 			releaseBlocked();
 		});
-		
+
 
 		gauge
 			.on("touchstart", function(){
@@ -394,7 +394,7 @@ function aSeaOfTweets(){
 			.on("touchend",function(){
 				releaseBlocked();
 			});
-			
+
 
 
 		dragme.on("mousemove",function(d){
@@ -422,9 +422,9 @@ function aSeaOfTweets(){
 	 	.on("touchend",function(){
 	 		releaseBlocked();
 	 	});
-	}		
+	}
 
-	function addTweets(tweet){	
+	function addTweets(tweet){
 
 		wave_animation=true;
 
@@ -445,8 +445,8 @@ function aSeaOfTweets(){
 
 					return "translate("+x+","+(margin_top + y)+")"
 				});
-				
-		
+
+
 		var circles=groups.append("circle")
 			.attr("class","center")
 			.attr("cx",function(d){
@@ -459,7 +459,7 @@ function aSeaOfTweets(){
 			.style("fill-opacity",function(d){
 				return 0.4;
 			});
-		
+
 
 		waves=groups.append("path")
 			.attr("class","followers")
@@ -496,11 +496,11 @@ function aSeaOfTweets(){
 		});
 		time_labels=time_labels.filter(function(d){
 		   	return d>=past-1000*60*60*10;
-		});			
+		});
 
 		timeline.selectAll("g.t")
 			.data(time_labels_removed)
-			.remove();	
+			.remove();
 
 	}
 
@@ -511,21 +511,21 @@ function aSeaOfTweets(){
 
 		max_radius=sea?(height/2):row_distance*2;
 		radius_scale.range([6,max_radius]);
-		
+
 		updateGrid();
 		updateGauge();
 		animating=true;
-		
-		
+
+
 
 		updateTimeLineGrid(500);
 		updateTimeline(500);
 		updateTweets(500);
-		
+
 		setTimeout(function(){
 			animating=false;
 		},500);
-		
+
 	}
 	function updateGauge() {
 		gauge
@@ -536,7 +536,7 @@ function aSeaOfTweets(){
 					return (height-20  - 3 -150)+"px";
 				}
 			});
-		
+
 	}
 	function updateGrid() {
 
@@ -559,7 +559,7 @@ function aSeaOfTweets(){
 					if(sea) {
 						return margin_top/3 + i*13;
 					} else {
-						return margin_top + i*row_distance -2;		
+						return margin_top + i*row_distance -2;
 					}
 				});
 		labels.selectAll("rect.candidate-name")
@@ -571,7 +571,7 @@ function aSeaOfTweets(){
 				})
 				.style("opacity",sea?1:0);
 
-		
+
 	}
 	function updateTweets(duration){
 
@@ -612,7 +612,7 @@ function aSeaOfTweets(){
 						y=(sea?(half*row_distance):y)
 
 					  	return "translate("+x+","+(margin_top + y)+")"
-					})	
+					})
 		}
 	}
 	function calculatePath(d) {
@@ -645,7 +645,7 @@ function aSeaOfTweets(){
 			cp11y=y2;
 
 		return "M"+x0+","+y0+("C"+cp00x+","+cp00y+","+cp01x+","+cp01y+","+x1+","+y1)+"L"+x1+","+y1+" C"+cp10x+","+cp10y+","+cp11x+","+cp11y+","+x2+","+y2;//+"Z"
-	} 
+	}
 
 	function wave(d){
 		var x0=0,
@@ -693,7 +693,7 @@ function aSeaOfTweets(){
 			}
 			time_labels=time_labels.concat(tmp_labels.reverse());
 		}
-		
+
 		var tg=timeline.selectAll("g.t")
 			.data(time_labels)
 			.enter()
@@ -737,7 +737,7 @@ function aSeaOfTweets(){
 					return "translate("+time_scale(d)+","+y+")";
 				});
 
-	}		
+	}
 
 	grid.selectAll("line.grid")
 		.data(topics)
@@ -747,10 +747,10 @@ function aSeaOfTweets(){
 				.attr("x1",0)
 				.attr("x2",width)
 				.attr("y1",function(d,i){
-					return margin_top + i*row_distance;	
+					return margin_top + i*row_distance;
 				})
 				.attr("y2",function(d,i){
-					return margin_top + i*row_distance;	
+					return margin_top + i*row_distance;
 				})
 				.style("opacity",0)
 
@@ -765,7 +765,7 @@ function aSeaOfTweets(){
 		.style("opacity",1)
 
 	d3.select("#sea")
-		.style("top",Math.floor(margin_top + half*row_distance)+"px")		
+		.style("top",Math.floor(margin_top + half*row_distance)+"px")
 
 	var ls=labels.selectAll("text")
 		.data(topics)
@@ -781,7 +781,7 @@ function aSeaOfTweets(){
 			if(sea) {
 				return margin_top/3 + i*13;
 			} else {
-				return margin_top + i*row_distance -2;		
+				return margin_top + i*row_distance -2;
 			}
 		})
 		.text(function(d){
@@ -791,13 +791,13 @@ function aSeaOfTweets(){
 			viz.classed(c,true);
 		})
 		.on("mouseout",function(c){
-			viz.classed(c,false);	
+			viz.classed(c,false);
 		})
 		.on("touchstart", function(){
 			viz.classed(c,true);
 		})
 		.on("touchend",function(){
-			viz.classed(c,false);	
+			viz.classed(c,false);
 		});
 
 	ls.append("rect")
@@ -816,13 +816,13 @@ function aSeaOfTweets(){
 
 	addGauge();
 
-	
+
 
 	// var socket = io.connect("ws://"+HOST+":"+PORT);
 	// var socket = io.connect("ws://localhost:8080");
-	
-	d3.json("http://"+HOST+":"+PORT+"/data",function(error,json){
-	
+
+	d3.json("https://"+HOST+"/data",function(error,json){
+
 		if (error) {
 			stats
 				.style("top","0px")
@@ -840,7 +840,7 @@ function aSeaOfTweets(){
 				data.push(d);
 			}
 		});
-		
+
 		var extent=d3.extent(data,function(d){
 				return d.t;
 			}),
@@ -850,7 +850,7 @@ function aSeaOfTweets(){
 			};
 		past=tmp_time_labels.min;
 		now=tmp_time_labels.max;
-		
+
 		time_scale.domain([past,now]);
 		reverse_scale.rangeRound([past,now]);
 
@@ -866,7 +866,7 @@ function aSeaOfTweets(){
 		loop();
 
 	});
-	
+
 
 
 	d3.selectAll("#mode > a").on("click",function(d){
@@ -888,7 +888,7 @@ function aSeaOfTweets(){
 
 	// socket.on("open",function(data){
 	// 	console.log("open",data)
-		
+
 	// 	stats
 	// 		.style("top","-50px")
 	// 		.select("div")
@@ -909,7 +909,7 @@ function aSeaOfTweets(){
 	// });
 
 	// socket.on('tweet', function (d) {
-		
+
 
 	// 	now=Math.max(d.t,now),
 	// 	past=now - time_span;
@@ -925,8 +925,8 @@ function aSeaOfTweets(){
 	// 	if(topics.indexOf(d.c)>-1)
 	// 			data.push(d);
 	// 	loop();
-		
-		
+
+
 	// });
 
 	function getData() {
@@ -937,10 +937,11 @@ function aSeaOfTweets(){
 				.text("CONNECTED!")
 
 	$.ajax({
-  url: "http://"+HOST+":"+PORT+"/get",
+  url: "https://"+HOST+"/get",
   data: {
     i: totali
   },
+    crossDomain: true,
   success: function( result ) {
     var d = JSON.parse(result);
     // console.log(d);
@@ -969,12 +970,12 @@ function aSeaOfTweets(){
 		loop();
   }
 });
-  
+
 	}
 	// getData();
-	setInterval(getData, 5000); 
+	setInterval(getData, 5000);
 	function loop(){
-		
+
 		if(!pause)
 			clean();
 
@@ -985,7 +986,7 @@ function aSeaOfTweets(){
 
 		addTweets();
 	}
-	
+
 	function disableSelect(el){
 		if(el.addEventListener){
 			el.addEventListener("mousedown",disabler,"false");
@@ -993,7 +994,7 @@ function aSeaOfTweets(){
 			el.attachEvent("onselectstart",disabler);
 		}
 	}
-	 
+
 	function enableSelect(el){
 		if(el.addEventListener){
 		el.removeEventListener("mousedown",disabler,"false");
@@ -1001,7 +1002,7 @@ function aSeaOfTweets(){
 			el.detachEvent("onselectstart",disabler);
 		}
 	}
-	 
+
 	function disabler(e){
 		if(e.preventDefault){ e.preventDefault(); }
 		return false;
