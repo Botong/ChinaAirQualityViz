@@ -1,20 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
 body {
-    font-family: "Source Code Pro", Consolas, monaco, monospace;
+    /*font-family: "Source Code Pro", Consolas, monaco, monospace;*/
     line-height: 1.5;
   font-weight: 400;
 }
+.year{
+  
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
+}
 .day {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   fill: #fff;
   stroke: black;
   stroke-width: .5px;
 }
 .month {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   fill: none;
   stroke: white;
   stroke-width: 1px;
 }
 .year-title {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   font-size: 18px;
   letter-spacing: 10px;
   fill: #00B0DD;
