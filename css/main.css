@@ -61,11 +61,11 @@ h2 {
 }
 #heatmap_dropdown{
   text-align: center;
-    position: relative;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /*position: relative;*/
+    padding-top: 12px;
+    /*padding-bottom: 5px;*/
     /*bottom: 570px;*/
-    background-color: #0275d8;
+    /*background-color: #0275d8;*/
 }
 #pollution {
     background-color: #83CEE9;
