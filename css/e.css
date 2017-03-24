@@ -301,15 +301,15 @@ svg text {
 	stroke:none;
 }
 #tweets g.tianjin circle{
-	fill:#ff6600;
+	fill:#ffe500;
 	stroke:none;
 }
 #tweets g.shanghai circle {
-	fill:#aaa;
+	fill:#eee;
 	stroke:none;
 }
 #tweets g.chongqing circle {
-	fill:#d8ff00;
+	fill:#7fff00;
 	stroke:none;
 }
 #tweets g.moderate circle {
