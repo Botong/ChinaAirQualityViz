@@ -46,7 +46,8 @@ function aSeaOfTweets(){
 
 	var viz=d3.select("#viz");
 
-	var width=window.innerWidth,
+	var inwidth=$("body").innerWidth()-30;
+	var width=inwidth,
 		height=viz.node().offsetHeight-10;
 
 	var max_radius=sea?(height/2):250;
@@ -134,10 +135,10 @@ function aSeaOfTweets(){
 
 				var old_width=width;
 
-				if(Math.abs(old_width - window.innerWidth)<20)
+				if(Math.abs(old_width - inwidth)<20)
 					return;
 
-				width=window.innerWidth;
+				width=inwidth;
 				height=viz.node().offsetHeight-10;
 
 
@@ -508,6 +509,8 @@ function aSeaOfTweets(){
 		sea = (sea != 1);
 
 		d3.select("body").classed("sea",sea);
+		// d3.select("div#viz").classed("sea",sea);
+		// d3.select(".sea");
 
 		max_radius=sea?(height/2):row_distance*2;
 		radius_scale.range([6,max_radius]);
@@ -515,8 +518,6 @@ function aSeaOfTweets(){
 		updateGrid();
 		updateGauge();
 		animating=true;
-
-
 
 		updateTimeLineGrid(500);
 		updateTimeline(500);
