@@ -1,6 +1,6 @@
-var HOST = "china-airquality.appspot.com",
-    PORT = "80";
-var TOKEN = "bca0d49923fd0e45662f7007f75df96c8abc14e6";
+var HOST="china-airquality.appspot.com",
+	PORT="80";
+var TOKEN="bca0d49923fd0e45662f7007f75df96c8abc14e6";
 
 function isCanvasSupported() {
     var elem = document.createElement('canvas');
