@@ -42,17 +42,19 @@
           </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
-        <iframe id="overview" width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
         <article>
-          <h2> Overview of the dataset </h2>
+          <h2 id="overview"> Overview of the dataset </h2>
           <p> The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). </p>
           <h2 id="analysis"> Analysis </h2>
           <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p>
           <h3> Where is the pollution? </h3>
+          <iframe  width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
           <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
             <br>
           To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
-      <div id="heatmap_dropdown" class="navbar navbar-default container-fluid">
+            <h3> What is the major source of pollution? </h3>  
+        <div id="heatmap_dropdown" class="navbar navbar-default container-fluid">
         <span>
           <form>
             <select id="index-dropdown" name="index-dropdown" class="selectpicker">
@@ -77,10 +79,12 @@
       <div id="stats">
         <div>connecting...</div>
       </div>
-      <h3> What is the major source of pollution? </h3>
-      <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
+     <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
         <br>
       We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
+        
+          <h3> What time is the air pollution more serious?</h3>
+    
       <div id="viz">
         <div class="title">
           <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
@@ -100,8 +104,7 @@
         </div>
       </div>
       <script src="../js/c.js"></script>
-      <h3> What time is the air pollution more serious?</h3>
-      <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
+  <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
         <br>
       We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference. </p>
       <h2 id="quality"> Data quality </h2>
