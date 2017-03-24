@@ -128,13 +128,13 @@ a:hover {
 	display:block;
 }
 .title h1 {
-	
+
 	color:#fff;
 	font-weight: 100;
 	text-shadow: 0px 0px 1px #fff;/*rgba(255,255,255,0.5);*/
 	margin:0;
 	padding:0;
-	
+
 	font-size:32px;
 	text-transform: uppercase;
 }
@@ -377,7 +377,7 @@ svg text {
 
 
 #statuses {
-	position: absolute;	
+	position: absolute;
 	top:0;
 	left:0;
 	width:1px;
@@ -539,7 +539,7 @@ svg text {
 	height:10%;
 	color:#666;
 	font-size: 14px;
-	
+
 }
 #footer.overlay {
 	bottom: 0;
@@ -622,10 +622,10 @@ svg text {
 }
 #footer.overlay .title {
 	position: relative;
-	margin-right:380px;	
+	margin-right:380px;
 }
 #footer.overlay .title p {
-	
+
 }
 
 div#social {

@@ -550,7 +550,6 @@ function aSeaOfTweets(){
 			.duration(1000)
 				.style("opacity",sea?0:1);
 
-
 		labels.selectAll("text.candidate-name")
 			.transition()
 			.duration(1000)
@@ -570,8 +569,6 @@ function aSeaOfTweets(){
 					return margin_top/3 + i*13 -10;
 				})
 				.style("opacity",sea?1:0);
-
-
 	}
 	function updateTweets(duration){
 

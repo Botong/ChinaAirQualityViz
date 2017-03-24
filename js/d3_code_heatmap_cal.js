@@ -134,23 +134,37 @@
                   .offset([-10, 0])
                   .html(function(d) {
                     //dataya[d]
-                    var status = "";
-                    if (dataya[d] < 50) {
-                        status = "healthy";
-                    } else if (dataya[d] > 50 && dataya[d] <= 100) {
-                        status = "moderate";
-                    } else if (dataya[d] > 100 && dataya[d] <= 150) {
-                        status = "Unhealthy for Sensitive Groups";
-                    } else if (dataya[d] > 150 && dataya[d] <= 200) {
-                        status = "Unhealthy";
-                    } else if (dataya[d] > 200 && dataya[d] <= 300) {
-                        status = "Very Unhealthy";
-                    } else {
-                        status = "Hazardous";
+                    var status = "healthy";
+                    var type = $( '#index-dropdown' ).select()[0].value;
+                    if(type != "o3") {
+                        if (dataya[d] < 50) {
+                            status = "healthy";
+                        } else if (dataya[d] > 50 && dataya[d] <= 100) {
+                            status = "moderate";
+                        } else if (dataya[d] > 100 && dataya[d] <= 150) {
+                            status = "Unhealthy for Sensitive Groups";
+                        } else if (dataya[d] > 150 && dataya[d] <= 200) {
+                            status = "Unhealthy";
+                        } else if (dataya[d] > 200 && dataya[d] <= 300) {
+                            status = "Very Unhealthy";
+                        } else {
+                            status = "Hazardous";
+                        }
                     }
                     var month = parseInt(d.getMonth())+1;
-                    return "<div id = 'pollution'>" + "City:" + $( '#city-dropdown' ).select()[0].value + "<br>"  + status +"<br>" + $( '#index-dropdown' ).select()[0].value + ":" + dataya[d] + "<br>" + "Date:"
-                    + d.getFullYear() + '-' + month + '-' + d.getDate() + "</div>";
+                    var city = $( '#city-dropdown' ).select()[0].value;
+                    var datei = d.getFullYear() + '-' + month + '-' + d.getDate();
+                    var slength = (10*status.length + 100) + "px";
+                    var html = "<div id = 'statuses'>" +
+                    "<div class = 'status "+ city.toLowerCase() + "' style='width:"+slength + ";height:40px" + "'>"
+                    + "<h2>" + status + "<span>@" + datei + "</span>" + "</h2>"
+                    + "<h3>" + "<span>"+type+"</span>" + dataya[d] + "</h3>"
+                    "</div>" +
+                     "</div>";
+                    html+="<ul>";
+					html+="<li class=\""+city.toLowerCase()+"\" style=\"width:" +slength + "\">"+city.toLowerCase()+"</li>"
+					html+="</ul>";
+                    return html;
                   })
 
                 rect.filter(function (d) {
