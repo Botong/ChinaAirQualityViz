@@ -1,223 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>China Air Pollution</title>
-
-  <link rel="stylesheet" href="../css/haha.css">
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/e.css">
-  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'> -->
-  <!-- <link href='https://fonts.googleapis.com/css?family=Lato:100,300,900' rel='stylesheet' type='text/css'> -->
-  <link rel="stylesheet" href="../css/main.css">
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-
-  <script src="../js/jquery-3.1.1.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/d3-tip.js"></script>
-  <script> d3.eesur = {}; //namespace  </script>
-  <script src="../js/d3_code_heatmap_cal.js"></script>
-</head>
-<body class="container sea">
-
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">China Air Pollution</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#analysis">Analysis</a></li>
-              <li><a href="#quality">Data Quality</a></li>
-            </ul>
+  <head>
+    <meta charset="utf-8">
+    <title>China Air Pollution</title>
+    <link rel="stylesheet" href="../css/haha.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/e.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:100,300,900' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-select.min.js"></script>
+    <script src="../js/d3-tip.js"></script>
+    <script> d3.eesur = {}; //namespace  </script>
+    <script src="../js/d3_code_heatmap_cal.js"></script>
+  </head>
+  <body class="container sea">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">China Air Pollution</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+            <li><a href="#quality">Data Quality</a></li>
+          </ul>
           </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-  <iframe id="overview" width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-  <article>
-    <h2> Overview of the dataset </h2>
-    <p> The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). </p>
+          </div><!--/.container-fluid -->
+        </nav>
+        <iframe id="overview" width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        <article>
+          <h2> Overview of the dataset </h2>
+          <p> The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). </p>
+          <h2 id="analysis"> Analysis </h2>
+          <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p>
+          <h3> Where is the pollution? </h3>
+          <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
+            <br>
+          To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
+      <div id="heatmap_dropdown" >
+        <span>
+          <form>
+            <select id="index-dropdown" name="index-dropdown" class="selectpicker">
+              <option value="pm25" selected="selected"> PM2.5 </option>
+              <option value="pm10">PM10 </option>
+              <option value="o3">O3 </option>
+              <option value="no2">NO2 </option>
+              <option value="so2">SO2 </option>
+              <option value="co">CO </option>
+            </select>
+            <select id="city-dropdown" name="city-dropdown" class="selectpicker">
+              <option value="Beijing" selected="selected"> Beijing </option>
+              <option value="Shanghai">Shanghai </option>
+              <option value="Chongqing">Chongqing </option>
+              <option value="Tianjin">Tianjin </option>
+            </select>
+          </form>
+        </span>
+      </div>
+        <section id="heatmap"></section>
+      </article>
+      <div id="stats">
+        <div>connecting...</div>
+      </div>
+      <h3> What is the major source of pollution? </h3>
+      <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
+        <br>
+      We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
+      <div id="viz">
+        <div class="title">
+          <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
+        </div>
+        <div id="sea">
+          <div class="title">
+            <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
+          </div>
+        </div>
+        <div id="mode">
+          <a id="multi" class="fs1" aria-hidden="true" data-icon="&#xe002;"><span>multi wave</span></a>
+          <a id="single" class="fs1" aria-hidden="true" data-icon="&#xe001;"><span>single wave</span></a>
+        </div>
+        <div id="statuses"></div>
+        <div id="dragme">
+          <div id="gauge"><span>Drag me</span></div>
+        </div>
+      </div>
+      <script src="../js/c.js"></script>
+      <h3> What time is the air pollution more serious?</h3>
+      <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
+        <br>
+      We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference. </p>
+      <h2 id="quality"> Data quality </h2>
+      <h3> Accountability </h3>
+      <p> The dataset is from the <a href="http://aqi.cga.harvard.edu/china/about/"> Air Quality Index Archive</a>, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and COfor every 3 hours. Researchers in Harvard University acquired data from different sources, such as the NASA Ozone and Air Quality website, The NUAMP website, and The Aqicn.org website, and then merged the data together to be a compact dataset.The dataset is for academic, non-commercial use only. </p>
+      <h3> Completeness </h3>
+      <p> The data isn’t complete. As we can see in the following picture, after plotting pollutions on each day, we found that data of some days is missing. </p>
+      <div class="col-md-12">
+        <img class="center-block" src="img/pic1.png" >
+        <p class="text-center">Figure 1: pm 2.5 values in 2014</p>
+      </div>
+      <p> Not only some days are missing in the dataset, but we also found that within thedataset, some datapoints have missing value itself. For example, as shown in Table 1, after list all values of PM10 by its frequency, we found there are 17 missing values in PM10.  </p>
+      <div class="col-md-12">
+        <img class="center-block" src="img/tab1.png" >
+        <p class="text-center">Table 1: the 7 smallest values in PM10.</p>
+      </div>
+      <h3> Coherence </h3>
+      <p> We assume, if the data is coherent, then different pollutions should be strongly related to each other. Thus, we regressed pm2.5 on pm10. We found their correlation reached the level of statistically significant, as shown in Table 2. For this reason, we assured that the data is coherent. </p>
+      <div class="col-md-12">
+        <img class="center-block" src="img/tab2.png" >
+        <p class="text-center">Table 2: regression of pm2.5 and pm10</p>
+      </div>
+      <h3> Correctness </h3>
+      <p> We first looked at the distribution of pm2.5, and identified the range is from 0 to 600. The range is consistence with pm2.5 data from other sources. We also randomly sampled several days from the data set, and compared the values with other datasets. We found the values are close to each other. </p>
+      <div class="col-md-12">
+        <img class="center-block" src="img/pic2.png" >
+        <p class="text-center">Figure 2: the distribution of pm2.5.</p>
+      </div>
+      <div class="col-md-12">
+        <img class="center-block" src="img/pic3.png" >
+        <p class="text-center">Figure 3: boxplot of pm2.5.</p>
+      </div>
+      <p> Finally, we draw a boxplot of pm2.5, we found there is an outliner, which has value 695. Although the value is high, we still decided to keep the value, because we found there were new articles mentioned in Jan 2017 the concentration of pm2.5 was higher than 1000, which means it’s possible that the concentration of pm2.5 was so higher under some conditions.    </p>
+    
 
-    <h2 id="analysis"> Analysis </h2>
-    <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in big cities. </p>
-    <h3> Where is the pollution? </h3>
-    <p> We first plotted the data of PM2.5 on a heat map, and provided the readers a scroll bar that shows the change of PM2.5 over time. We can see in the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories, cars and motorcycles in big cities.
-    <br>
-    To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
-    <section id="heatmap"></section>
-  </article>
-
- <div id="heatmap_dropdown">
-    <span>
-      <form>
-         <select id="index-dropdown" name="index-dropdown">
-             <option value="pm25" selected="selected"> PM2.5 </option>
-             <option value="pm10">PM10 </option>
-             <option value="o3">O3 </option>
-             <option value="no2">NO2 </option>
-             <option value="so2">SO2 </option>
-             <option value="co">CO </option>
-         </select>
-         <select id="city-dropdown" name="city-dropdown">
-             <option value="Beijing" selected="selected"> Beijing </option>
-             <option value="Shanghai">Shanghai </option>
-             <option value="Chongqing">Chongqing </option>
-             <option value="Tianjin">Tianjin </option>
-         </select>
-      </form>
-    </span>
-  </div>
-
-  <script>
-  // *****************************************
-  // render chart
-  // *****************************************
-  (function() {
+      <script>
+      // *****************************************
+      // render chart
+      // *****************************************
+      (function() {
       'use strict';
-
       var nestedData;
       var parseDate = d3.time.format('%Y-%m-%d').parse;
       // create chart
       var heatChart = d3.eesur.heatmap()
-          .height(500)
-          .startYear('2014')
-          .endYear('2017')
-          .on('_hover', function (d, i) {
-              var f = d3.time.format('%B %d, %Y');
-              d3.select('#info')
-                  .text(function () {
-                      return 'date: ' + f(d) + ' | value: ' + nestedData[d];
-                  });
-          });
+      .height(500)
+      .startYear('2014')
+      .endYear('2017')
+      .on('_hover', function (d, i) {
+      var f = d3.time.format('%B %d, %Y');
+      d3.select('#info')
+      .text(function () {
+      return 'date: ' + f(d) + ' | value: ' + nestedData[d];
+      });
+      });
       var city = "Beijing";
       var index = "pm25";
       var index_select = $( '#index-dropdown' );
       var city_select = $( '#city-dropdown' );
       index_select.change( function() {
-        index = $( this ).val();
-        mapData();
+      index = $( this ).val();
+      mapData();
       });
       city_select.change( function() {
-        city = $( this ).val();
-        mapData();
+      city = $( this ).val();
+      mapData();
       });
       mapData();
       function mapData() {
-          // apply after nesting data
-          d3.json('../file/bigcity.json', function(error, data) {
-              if (error) return console.warn(error);
-              nestedData = d3.nest()
-                  .key(function (d) {
-                      return parseDate(d.date);
-                  })
-                  .rollup(function (n) {
-                      n = n[0]
-                      if("undefined" === typeof n.value)
-                          return 0;
-                      if("undefined" === typeof n.value[city])
-                          return 0;
-                      return n.value[city][index];
-                  })
-                  .map(data);
-              d3.select(".chart").remove();
-
-              // render chart
-              d3.select('#heatmap')
-                  .datum(nestedData)
-                  .call(heatChart);
-
-          });
+      // apply after nesting data
+      d3.json('../file/bigcity.json', function(error, data) {
+      if (error) return console.warn(error);
+      nestedData = d3.nest()
+      .key(function (d) {
+      return parseDate(d.date);
+      })
+      .rollup(function (n) {
+      n = n[0]
+      if("undefined" === typeof n.value)
+      return 0;
+      if("undefined" === typeof n.value[city])
+      return 0;
+      return n.value[city][index];
+      })
+      .map(data);
+      d3.select(".chart").remove();
+      // render chart
+      d3.select('#heatmap')
+      .datum(nestedData)
+      .call(heatChart);
+      });
       }
-  }());
-
-  d3.select(self.frameElement).style('height', '800px');
-  </script>
-
-  <div id="stats">
-      <div>connecting...</div>
-  </div>
-
-<h3> What is the major source of pollution? </h3>
-<p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
-<br>
-We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
-
-  <div id="viz">
-      <div class="title">
-          <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
-      </div>
-      <div id="sea">
-          <div class="title">
-          <h1>a sea of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
-          </div>
-      </div>
-      <div id="mode">
-          <a id="multi" class="fs1" aria-hidden="true" data-icon="&#xe002;"><span>multi wave</span></a>
-          <a id="single" class="fs1" aria-hidden="true" data-icon="&#xe001;"><span>single wave</span></a>
-      </div>
-      <div id="statuses"></div>
-      <div id="dragme">
-          <div id="gauge"><span>Drag me</span></div>
-      </div>
-  </div>
-  <script src="../js/c.js"></script>
-
-  <h3> What time is the air pollution more serious?</h3>
-
-  <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
-  <br>
-  We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference. </p>
-
-  <h2 id="quality"> Data quality </h2>
-  <h3> Accountability </h3>
-  <p> The dataset is from the <a href="http://aqi.cga.harvard.edu/china/about/"> Air Quality Index Archive</a>, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and COfor every 3 hours. Researchers in Harvard University acquired data from different sources, such as the NASA Ozone and Air Quality website, The NUAMP website, and The Aqicn.org website, and then merged the data together to be a compact dataset.The dataset is for academic, non-commercial use only. </p>
-
-  <h3> Completeness </h3>
-  <p> The data isn’t complete. As we can see in the following picture, after plotting pollutions on each day, we found that data of some days is missing. </p>
-  <div class="col-md-12">
-   <img class="center-block" src="img/pic1.png" >
-    <p class="text-center">Figure 1: pm 2.5 values in 2014</p>
-   </div>
-  <p> Not only some days are missing in the dataset, but we also found that within thedataset, some datapoints have missing value itself. For example, as shown in Table 1, after list all values of PM10 by its frequency, we found there are 17 missing values in PM10.  </p>
-
-  <div class="col-md-12">
-   <img class="center-block" src="img/tab1.png" >
-    <p class="text-center">Table 1: the 7 smallest values in PM10.</p>
-   </div>
-
-
-<h3> Coherence </h3>
-
-<p> We assume, if the data is coherent, then different pollutions should be strongly related to each other. Thus, we regressed pm2.5 on pm10. We found their correlation reached the level of statistically significant, as shown in Table 2. For this reason, we assured that the data is coherent. </p>
-
-  <div class="col-md-12">
-   <img class="center-block" src="img/tab2.png" >
-    <p class="text-center">Table 2: regression of pm2.5 and pm10</p>
-   </div>
-
- <h3> Correctness </h3>
- <p> We first looked at the distribution of pm2.5, and identified the range is from 0 to 600. The range is consistence with pm2.5 data from other sources. We also randomly sampled several days from the data set, and compared the values with other datasets. We found the values are close to each other. </p>
-
-  <div class="col-md-12">
-   <img class="center-block" src="img/pic2.png" >
-    <p class="text-center">Figure 2: the distribution of pm2.5.</p>
-   </div>
-
-  <div class="col-md-12">
-   <img class="center-block" src="img/pic3.png" >
-    <p class="text-center">Figure 3: boxplot of pm2.5.</p>
-   </div>
-<p> Finally, we draw a boxplot of pm2.5, we found there is an outliner, which has value 695. Although the value is high, we still decided to keep the value, because we found there were new articles mentioned in Jan 2017 the concentration of pm2.5 was higher than 1000, which means it’s possible that the concentration of pm2.5 was so higher under some conditions.    </p>
-</body>
-
-</html>
+      }());
+      d3.select(self.frameElement).style('height', '800px');
+      </script>
+    </body>
+  </html>

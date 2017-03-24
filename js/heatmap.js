@@ -26,6 +26,9 @@
       index = $( this ).val();
       mapData();
     });
+    $('.dropdown-menu a').click(function() {
+        alert("fuck");
+    });
     city_select.change( function() {
       city = $( this ).val();
       mapData();
