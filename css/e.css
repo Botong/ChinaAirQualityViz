@@ -24,13 +24,10 @@ iframe.rhc {
 }
 body {
 	background: #000;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 }
 body.sea {
 	background: #fff;
-}
-h1 {
-	font-family: 'Lato', sans-serif;
 }
 a {
 	color:#0072ff;
@@ -144,7 +141,7 @@ a:hover {
 .title h3 {
 	margin:0;
 	padding:0;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	font-size:11px;
 	text-transform: uppercase;
 	color:#fff;

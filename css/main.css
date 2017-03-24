@@ -1,20 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
 body {
-    font-family: "Source Code Pro", Consolas, monaco, monospace;
+    /*font-family: "Source Code Pro", Consolas, monaco, monospace;*/
     line-height: 1.5;
   font-weight: 400;
 }
+.year{
+  
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
+}
 .day {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   fill: #fff;
   stroke: black;
   stroke-width: .5px;
 }
 .month {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   fill: none;
   stroke: white;
   stroke-width: 1px;
 }
 .year-title {
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
   font-size: 18px;
   letter-spacing: 10px;
   fill: #00B0DD;
@@ -49,11 +56,16 @@ svg text {
 section.heatmap{
     float: left;
 }
+h2 {
+  margin-top: 32px;
+}
 #heatmap_dropdown{
-    position: relative;
-    padding-left:500px;
-    bottom: 570px;
-    background-color: lightblue;
+  text-align: center;
+    /*position: relative;*/
+    padding-top: 12px;
+    /*padding-bottom: 5px;*/
+    /*bottom: 570px;*/
+    /*background-color: #0275d8;*/
 }
 #pollution {
     background-color: #83CEE9;
