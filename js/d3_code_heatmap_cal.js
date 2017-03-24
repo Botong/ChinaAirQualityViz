@@ -160,7 +160,7 @@
                     var month = parseInt(d.getMonth())+1;
                     var city = $( '#city-dropdown' ).select()[0].value;
                     var datei = d.getFullYear() + '-' + month + '-' + d.getDate();
-                    var slength = (7*status.length + 150) + "px";
+                    var slength = (7*status.length + 151) + "px";
 
                     var html = "<div id = 'statuses'>" +
                     "<div class = 'status "+ city.toLowerCase() + "' style='width:"+slength + ";height:40px" + "'>"
