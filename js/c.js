@@ -259,7 +259,7 @@ function aSeaOfTweets() {
             ys.push(d.__y);
         });
 
-        var delta = height - (tweets[tweets.length - 1].__y + 80);
+        var delta = height - (tweets[tweets.length - 1].__y + 85);
         if (delta < 0) {
             tweets.forEach(function (d, i) {
                 d.__y += delta;
@@ -455,7 +455,7 @@ function aSeaOfTweets() {
                 var x = time_scale(d.t),
                     y = topics.indexOf(d.c) * row_distance;
 
-                y = (sea ? (half * row_distance) : y)
+                y = (sea ? (half * row_distance) : y) + 85
 
                 return "translate(" + x + "," + (margin_top + y) + ")"
             });
@@ -603,7 +603,7 @@ function aSeaOfTweets() {
                     var x = time_scale(d.t),
                         y = topics.indexOf(d.c) * row_distance;
 
-                    y = (sea ? (half * row_distance) : y)
+                    y = (sea ? (half * row_distance) : y) + 85
 
                     return "translate(" + x + "," + (margin_top + y) + ")"
                 })
@@ -629,7 +629,7 @@ function aSeaOfTweets() {
                     var x = time_scale(d.t),
                         y = topics.indexOf(d.c) * row_distance;
 
-                    y = (sea ? (half * row_distance) : y)
+                    y = (sea ? (half * row_distance) : y) + 85
 
                     return "translate(" + x + "," + (margin_top + y) + ")"
                 })
