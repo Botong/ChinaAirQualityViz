@@ -46,7 +46,7 @@ def usertest():
 
 @app.route('/poster')
 def poster():
-    template = JINJA_ENVIRONMENT.get_template('templates/poster.html')
+    template = JINJA_ENVIRONMENT.get_template('templates/Poster.html')
     return template.render()
 
 @app.route('/teamInfo')
