@@ -34,9 +34,19 @@ def index():
     # logging.info(cursor.fetchall())
     return template.render()
 
-@app.route('/table')
-def table():
-    template = JINJA_ENVIRONMENT.get_template('templates/table.html')
+@app.route('/quality')
+def quality():
+    template = JINJA_ENVIRONMENT.get_template('templates/DataQuality.html')
+    return template.render()
+
+@app.route('/usertest')
+def usertest():
+    template = JINJA_ENVIRONMENT.get_template('templates/UserTest.html')
+    return template.render()
+
+@app.route('/poster')
+def poster():
+    template = JINJA_ENVIRONMENT.get_template('templates/poster.html')
     return template.render()
 
 @app.route('/teamInfo')

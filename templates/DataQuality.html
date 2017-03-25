@@ -31,59 +31,60 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">China Air Pollution</a>
+          <a class="navbar-brand" href="/">China Air Pollution</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html#overview">Overview</a></li>
-            <li><a href="index.html#analysis">Analysis</a></li>
-            <li><a href="DataQuality.html">Data Quality</a></li>
-            <li><a href="UserTest.html">UserTest</a></li>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/#analysis">Analysis</a></li>
+            <li class="active"><a href="#">Data Quality</a></li>
+            <li><a href="/usertest">User Test</a></li>
+            <li><a href="/poster">Poster</a></li>
 
           </ul>
           </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
         <article>
-          <h1>Data Quality</h1>
-      <h2> Accountability </h2>
+          <h2>Data Quality</h2>
+      <h3> Accountability </h3>
       <p> The dataset is from the <a href="http://aqi.cga.harvard.edu/china/about/"> Air Quality Index Archive</a>, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and COfor every 3 hours. Researchers in Harvard University acquired data from different sources, such as the NASA Ozone and Air Quality website, The NUAMP website, and The Aqicn.org website, and then merged the data together to be a compact dataset.The dataset is for academic, non-commercial use only. </p>
-      <h2> Completeness </h2>
+      <h3> Completeness </h3>
 
       <div class="row">
       <div class="col-md-6">
-        <p> The data isn’t complete. As we can see in the following picture, after plotting pollutions on each day, we found that data of some days is missing. </p>
+        <p> The data isn’t complete. As we can see in the following figure, after plotting pollutions on each day, we found that data of some days is missing. </p>
         <p> Not only some days are missing in the dataset, but we also found that within thedataset, some datapoints have missing value itself. For example, as shown in Table 1, after list all values of PM10 by its frequency, we found there are 17 missing values in PM10.  </p>
         </div>
       <div class="col-md-6">
-        <img class="center-block" src="../img/tab1.png" >
+        <img class="center-block img-thumbnail" src="../img/tab1.png" >
         <p class="text-center">Table 1: the 7 smallest values in PM10.</p>
       </div>
       <div class="col-md-12">
-        <img class="center-block" src="../img/pic1.png" >
-        <p class="text-center">Figure 1: pm 2.5 values in 2014</p>
+        <img class="center-block img-thumbnail" src="../img/pic1.png" >
+        <p class="text-center">Figure 2: pm 2.5 values in 2014</p>
         </div>
       </div>
       
-      <h2> Coherence </h2>
+      <h3> Coherence </h3>
       <div class="row">
       <div class="col-md-6">
       <p> We assume, if the data is coherent, then different pollutions should be strongly related to each other. Thus, we regressed pm2.5 on pm10. We found their correlation reached the level of statistically significant, as shown in Table 2. For this reason, we assured that the data is coherent. </p>
       </div>
       <div class="col-md-6">
-        <img class="center-block" src="../img/tab2.png" >
+        <img class="center-block img-thumbnail" src="../img/tab2.png" >
         <p class="text-center">Table 2: regression of pm2.5 and pm10</p>
       </div>
       </div>
-      <h2> Correctness </h2>
+      <h3> Correctness </h3>
       <p> We first looked at the distribution of pm2.5, and identified the range is from 0 to 600. The range is consistence with pm2.5 data from other sources. We also randomly sampled several days from the data set, and compared the values with other datasets. We found the values are close to each other. </p>
       <div class="col-md-12">
-        <img class="center-block" src="../img/pic2.png" >
-        <p class="text-center">Figure 2: the distribution of pm2.5.</p>
+        <img class="center-block img-thumbnail" src="../img/pic2.png" >
+        <p class="text-center">Figure 3: the distribution of pm2.5.</p>
       </div>
       <div class="col-md-12">
-        <img class="center-block" src="../img/pic3.png" >
-        <p class="text-center">Figure 3: boxplot of pm2.5.</p>
+        <img class="center-block img-thumbnail" src="../img/pic3.png" >
+        <p class="text-center">Figure 4: boxplot of pm2.5.</p>
       </div>
       <p> Finally, we draw a boxplot of pm2.5, we found there is an outliner, which has value 695. Although the value is high, we still decided to keep the value, because we found there were new articles mentioned in Jan 2017 the concentration of pm2.5 was higher than 1000, which means it’s possible that the concentration of pm2.5 was so higher under some conditions.    </p>
     

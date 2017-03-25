@@ -857,8 +857,6 @@ function aSeaOfTweets() {
             return console.log("there was an error loading the data: " + error);
         }
 
-        console.log(json)
-
         var __data = (json.responseText) ? JSON.parse(json.responseText) : json;//;
         __data.forEach(function (d) {
             if (topics.indexOf(d.c) > -1) {

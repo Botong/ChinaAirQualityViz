@@ -36,10 +36,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html#overview">Overview</a></li>
-            <li><a href="index.html#analysis">Analysis</a></li>
-            <li><a href="DataQuality.html">Data Quality</a></li>
-            <li><a href="UserTest.html">Data Quality</a></li>
+            <li class="active"><a href="#top">Overview</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+            <li><a href="quality">Data Quality</a></li>
+            <li><a href="usertest">User Test</a></li>
+            <li><a href="/poster">Poster</a></li>
 
           </ul>
           </div><!--/.nav-collapse -->
@@ -61,22 +62,23 @@
           </p>
 
 
-          <h2 id="overview"> Overview of the dataset </h2>
-          <p>  The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). 
+          <h2> Overview of the dataset </h2>
+          <p id="analysis">  The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). 
 Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuality.html">this link</a>to get more details. </p>
-          <h2 id="analysis"> Analysis </h2>
+          <h2> Analysis </h2>
           <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in different places, if it achieves the level that threaten public health and also address the possible source to cause the pollution. We did some user test to gain feedback and decided the way we present the dataset. 
             Please click <a href="/templates/UserTest.html">here </a>to see the details of user tests. </p>
           <h3> Where is the pollution? </h3>
           <iframe  width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-          <img class="center-block" src="img/IndustrialClusters.png" >
-          <p>Picture1: Map of China's Top 100 Industrial Clusters. <a href="http://www.chinasourcingblog.org/2011/11/chinas-industrial-clusters.html">source</a>
-          *Attention: Since there isn't public available dataset of accurate locations of factoriess, we can't produce our own picture. However, to give our readers a general sense about where the factories are, we put a pciture of industrial culsters in China, which is released by an research center.  </p>
+          <img class="center-block img-thumbnail" width="100%" src="img/IndustrialClusters.png" >
+          <p>Figure 1: Map of China's Top 100 Industrial Clusters. <a href="http://www.chinasourcingblog.org/2011/11/chinas-industrial-clusters.html">source</a>
+          <small>(*Note: Since there isn't any publically available dataset of accurate locations of factories, we can't produce our own figure. However, to give our readers a general sense about where the factories are, we put a pciture of industrial culsters in China, which is released by an research center. </small>)</p>
 
-          <p> We first plot the data of PM2.5 on a heat map to show the distribution of pollution in China. The reason why we chose to use PM2.5 is because we found it is the major sources of air pollution in China. We also provide the readers a scroll bar that shows the change of PM2.5 over time. As we can see, on the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories(see picture1 for reference), cars and motorcycles in big cities. 
+          <p> We first plot the data of PM2.5 on a heat map to show the distribution of pollution in China. The reason why we chose to use PM2.5 is because we found it is the major sources of air pollution in China. We also provide the readers a scroll bar that shows the change of PM2.5 over time. As we can see, on the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories(see Figure 1 for reference), cars and motorcycles in big cities. 
             <br>
           To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
             <h3> What is the major source of pollution? </h3>  
+            <div class="img-thumbnail">
         <div id="heatmap_dropdown" class="navbar navbar-default container-fluid">
         <span>
           <form>
@@ -98,6 +100,7 @@ Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuali
         </span>
       </div>
         <section id="heatmap"></section>
+        </div>
       </article>
       <div id="stats">
         <div>connecting...</div>
@@ -118,8 +121,8 @@ Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuali
           </div>
         </div>
         <div id="mode">
-          <a id="multi" class="fs1" aria-hidden="true" data-icon="&#xe002;"><span>multi wave</span></a>
-          <a id="single" class="fs1" aria-hidden="true" data-icon="&#xe001;"><span>single wave</span></a>
+          <a id="multi" class="fs1" aria-hidden="true" data-icon="&#xe002;"><span>multi rows</span></a>
+          <a id="single" class="fs1" aria-hidden="true" data-icon="&#xe001;"><span>single stream</span></a>
         </div>
         <div id="statuses"></div>
         <div id="dragme">
