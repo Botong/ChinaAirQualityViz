@@ -41,76 +41,72 @@
             <li><a href="quality">Data Quality</a></li>
             <li><a href="usertest">User Test</a></li>
             <li><a href="/poster">Poster</a></li>
-
           </ul>
           </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
         <article>
           <h1>Air Pollution in China</h1>
-          <p> Every year, millions of people go to China. They are tourists, workers, students or people who just want to experience the Chinese culture. However, after getting off the plane, except the wonderful Chinese culture and astonishing ancient Chinese buildings, one other thing might surprise them: How come the blue sky is so rare in this land? People might go to different places, eat different food and do different things everyday, but the sky is shared. Everyone breathes same air, no difference. Air pollution becomes the most visible but still mysterious problem in China: It is visible, because people can see it by eyes, by seeing how grey the sky is today. Yet it is also mysterious, since people don’t have a clear sense that how dangerous the air pollution is by merely looking at the sky, and also have no idea if the sky in other cities is greyer. 
-          <br>
+          <p> Every year, millions of people go to China. They are tourists, workers, students or people who just want to experience the Chinese culture. However, after getting off the plane, except the wonderful Chinese culture and astonishing ancient Chinese buildings, one other thing might surprise them: How come the blue sky is so rare in this land? People might go to different places, eat different food and do different things everyday, but the sky is shared. Everyone breathes same air, no difference. Air pollution becomes the most visible but still mysterious problem in China: It is visible, because people can see it by eyes, by seeing how grey the sky is today. Yet it is also mysterious, since people don’t have a clear sense that how dangerous the air pollution is by merely looking at the sky, and also have no idea if the sky in other cities is greyer.
+            <br>
           For this reason, we want to dig deeper about the air pollution in China, to know how serious the air pollution is in different areas, the extent it threaten to health and also address the possible source to cause the pollution. </p>
           <h2 id="dataSelection"> Data Selection </h2>
-          <p>There are different datasets that contains data of air pollution in China. We found 3 datasets, which are<a href="http://www.stateair.net/web/historical/1/1.html"> Mission China air quality monitoring program </a>, 
+          <p>There are different datasets that contains data of air pollution in China. We found 3 datasets, which are<a href="http://www.stateair.net/web/historical/1/1.html"> Mission China air quality monitoring program </a>,
           <a href="http://beijingair.sinaapp.com/">National Air Quality Data and Beijing Air Quality Data</a>, released by China National Environmental Monitoring Centre and Environmental program in Beijing, and <a href="http://aqi.cga.harvard.edu/china/about/">Air Quality Index Archive</a>, released by Harvard University. We finally decided to use on the dataset that released by Harvard University. We chose this dataset for following reasons: <br>
           1. Although the Mission China air quality monitoring program covers longer time period than other 2 dataset, but it only has the data of PM 2.5. However, PM2.5 isn’t the only source of air pollution, for studying the air pollution in China, we need to also consider other sources of air pollution to know the main factor of air pollution in China, so we decided not to use this dataset.
           <br>
-          2. The second dataset, National Air Quality Data and Beijing Air Quality Data, provides not only data of PM2.5 but also other pollution sources, which seemed promising, but we still have one concern: the data is from Chinese government. It’s well-known that Chinese government modified their officially released data for covering some social issues. Thus, the dataset might underestimate the air pollution problem in China. 
+          2. The second dataset, National Air Quality Data and Beijing Air Quality Data, provides not only data of PM2.5 but also other pollution sources, which seemed promising, but we still have one concern: the data is from Chinese government. It’s well-known that Chinese government modified their officially released data for covering some social issues. Thus, the dataset might underestimate the air pollution problem in China.
           <br>
           3. Finally we chose the third dataset. It contains information of most air pollution sources, and also released by a third-party for academic use. Because the source is from an impartial third-party academic organization, it's less possible that the data is modified to serving the interests of the Chinese government or big companies.
-          </p>
-
-
-          <h2> Overview of the dataset </h2>
-          <p id="analysis">  The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind). 
-Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuality.html">this link</a>to get more details. </p>
+        </p>
+        <h2> Overview of the dataset </h2>
+        <p id="analysis">  The dataset is from the Air Quality Index Archive, released by Harvard University. The data gained from on ground monitors in China. From Feb 2014 to Feb 2016, the monitors recorded PM2.5, PM10, O3, NO2, SO2 and CO for every 3 hours. The dataset also contains the information of the monitors (name, location) and the weather of the date (includes temperature, pressure, humidity and wind).
+          Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuality.html">this link</a>to get more details. </p>
           <h2> Analysis </h2>
-          <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in different places, if it achieves the level that threaten public health and also address the possible source to cause the pollution. We did some user test to gain feedback and decided the way we present the dataset. 
+          <p> We want to know the general information of air pollution in China, to understand how serious the air pollution is in different places, if it achieves the level that threaten public health and also address the possible source to cause the pollution. We did some user test to gain feedback and decided the way we present the dataset.
             Please click <a href="/templates/UserTest.html">here </a>to see the details of user tests. </p>
-          <h3> Where is the pollution? </h3>
-          <iframe  width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-          <img class="center-block img-thumbnail" width="100%" src="img/IndustrialClusters.png" >
-          <p>Figure 1: Map of China's Top 100 Industrial Clusters. <a href="http://www.chinasourcingblog.org/2011/11/chinas-industrial-clusters.html">source</a>
-          <small>(*Note: Since there isn't any publically available dataset of accurate locations of factories, we can't produce our own figure. However, to give our readers a general sense about where the factories are, we put a pciture of industrial culsters in China, which is released by an research center. </small>)</p>
-
-          <p> We first plot the data of PM2.5 on a heat map to show the distribution of pollution in China. The reason why we chose to use PM2.5 is because we found it is the major sources of air pollution in China. We also provide the readers a scroll bar that shows the change of PM2.5 over time. As we can see, on the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories(see Figure 1 for reference), cars and motorcycles in big cities. 
+            <h3> Where is the pollution? </h3>
+            <iframe  width="100%" height="520" frameborder="0" src="https://bianyi99.carto.com/builder/0e3f8000-0f6c-11e7-a318-0e05a8b3e3d7/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+            <img class="center-block img-thumbnail" width="100%" src="img/IndustrialClusters.png" >
+            <p>Figure 1: Map of China's Top 100 Industrial Clusters. <a href="http://www.chinasourcingblog.org/2011/11/chinas-industrial-clusters.html">source</a>
+          <small>(*Note: Since there isn't public available dataset of accurate locations of factoriess, we can't produce our own picture. However, to give our readers a general sense about where the factories are, we put a pciture of industrial culsters in China, which is released by an research center. This picture isn't created by us, the reason why it is here is only for providing a background understanding to readers. All the credits of this picture is for the orginal organization that released it.</small>)</p>
+          <p> We first plot the data of PM2.5 on a heat map to show the distribution of pollution in China. The reason why we chose to use PM2.5 is because we found it is the major sources of air pollution in China. We also provide the readers a scroll bar that shows the change of PM2.5 over time. As we can see, on the map, the pollution is more serious in winter than in summer, which could be caused by the direction of monsoon in Asia and the consuming of coal in winter. And also, the pollution is more serious in big cities, which might be the result of the large amount of factories(see Figure 1 for reference), cars and motorcycles in big cities.
             <br>
           To further investigate the pollution, we picked four cities that have most serious pollution, which are Beijing, Shanghai, Tianjin and Chongqing. </p>
-            <h3> What is the major source of pollution? </h3>  
-            <div class="img-thumbnail">
-        <div id="heatmap_dropdown" class="navbar navbar-default container-fluid">
-        <span>
-          <form>
-            <select id="index-dropdown" name="index-dropdown" class="selectpicker">
-              <option value="pm25" selected="selected"> PM2.5 </option>
-              <option value="pm10">PM10 </option>
-              <option value="o3">O3 </option>
-              <option value="no2">NO2 </option>
-              <option value="so2">SO2 </option>
-              <option value="co">CO </option>
-            </select>
-            <select id="city-dropdown" name="city-dropdown" class="selectpicker">
-              <option value="Beijing" selected="selected"> Beijing </option>
-              <option value="Shanghai">Shanghai </option>
-              <option value="Chongqing">Chongqing </option>
-              <option value="Tianjin">Tianjin </option>
-            </select>
-          </form>
-        </span>
-      </div>
-        <section id="heatmap"></section>
+          <h3> What is the major source of pollution? </h3>
+          <div class="img-thumbnail">
+            <div id="heatmap_dropdown" class="navbar navbar-default container-fluid">
+              <span>
+                <form>
+                  <select id="index-dropdown" name="index-dropdown" class="selectpicker">
+                    <option value="pm25" selected="selected"> PM2.5 </option>
+                    <option value="pm10">PM10 </option>
+                    <option value="o3">O3 </option>
+                    <option value="no2">NO2 </option>
+                    <option value="so2">SO2 </option>
+                    <option value="co">CO </option>
+                  </select>
+                  <select id="city-dropdown" name="city-dropdown" class="selectpicker">
+                    <option value="Beijing" selected="selected"> Beijing </option>
+                    <option value="Shanghai">Shanghai </option>
+                    <option value="Chongqing">Chongqing </option>
+                    <option value="Tianjin">Tianjin </option>
+                  </select>
+                </form>
+              </span>
+            </div>
+          <section id="heatmap"></section>
         </div>
       </article>
       <div id="stats">
         <div>connecting...</div>
       </div>
-     <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
+      <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
         <br>
       We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
-        
-          <h3> What time is the air pollution more serious?</h3>
-    
+      
+      <h3> What time is the air pollution more serious?</h3>
+      
       <div id="viz">
         <div class="title">
           <h1>Bubbles of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
@@ -130,10 +126,12 @@ Data Quality is assured by examined 4C. Please see <a href="/templates/DataQuali
         </div>
       </div>
       <script src="../js/c.js"></script>
-  <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use waves to show the AQI for each city in every 3 hours. Each peak of waves represents a data point, when the peak is higher, the danger of air pollution to health is higher. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiwave and Singalwave by clicking thebutton on the bottom right corner of the graph.
+      <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use circles to show the AQI for each city. Each circle represents a data point. The y-axis corresponds to the value of amount of pollution, when the circle is higher, the danger of air pollution to health is higher. The x-axis corresponds to time of the data. Users can drag the line to see the details of the data, and also see if the air quality cause danger to users. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiview and Singalview by clicking thebutton on the bottom right corner of the graph.
+        
         <br>
-      We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference. </p>
-    
+        We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference, and the result also implies that the ownership of private vehicles might make the air pollution problem more serious.
+      </p>
+      
       <script>
       // *****************************************
       // render chart
