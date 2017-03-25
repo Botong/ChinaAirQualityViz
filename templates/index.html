@@ -101,12 +101,19 @@
       <div id="stats">
         <div>connecting...</div>
       </div>
-      <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO).
+      <p>In this graph, each cell represents the average value of air pollution within one day; the darker the cell is, the pollution is higher. Readers can choose which cities they want to investigate and also can choose the specific type of air pollution (PM2.5, PM10, O3, NO2, SO2 and CO). When users hoover mouse over each cell, they can see the detail of each day.
+      <br>
+      <br>
+We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities. By switching the tab of different sources of pollution, we can see the color of cells of PM2.5 generally much dark than other sources. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted.
+ <br>
+ <br>
+Although in winter, most days were with serous air pollution, we can still see some days had much lighter red then the cells next to them. For example, on November 11th 2014, we can see there are two adjacent cells mysterious lighter than their other neighbors. What happened on that two days?
         <br>
-      We found that the pollution of PM2.5 is more serious than other pollution sources, because it has higher concentration than the others in different cities.Following is the comparison of PM2.5 and PM10, on left-hand side is the concentration of PM2.5, and right-hand side is the concentration of PM10. Dataof other pollutions is available on the website. Also, we see the same trend that the pollution is worse in winter, but there are still days in summer that were highly polluted. </p>
-      
+        <br>
+     The days showed the famous “APEC blue”. In 2014, to prepare the APEC summit in Beijing(November 10th – 11th ), started from November 3rd, every high-emission factories in Jingjinji Area (Beijing, Tianjin and Hebei) was stopped working, citizens were also not restricted to drive (regulations like only car’s with even license plate number could be driven on the road were implemented), most people who worked in government-owned organization also got a break from November 7th to November 12th. Some area in Tianjin even stopped heat networks. In Hebei, 2,386 companies stopped manufacturing and 2,445 constructions were stopped. As the result of the regulations, we saw the very good air quality in November 11th and November 12th. After the regulations were discontinued, the air pollution came back again – The air quality of November 15th became “very unhealthy”. No need to read news, citizens knew the end of APEC summit by looking at the sky.</p>
+
       <h3> What time is the air pollution more serious?</h3>
-      
+
       <div id="viz">
         <div class="title">
           <h1>Bubbles of...<span>pollution</span></h1><h3>How is the air pollution in large cities in China?</h3>
@@ -127,11 +134,11 @@
       </div>
       <script src="../js/c.js"></script>
       <p> We also want to know at which time the air pollution is more serious and if it reached that level that might cause danger to health. To see the trend within a day, we created an interactive graph, and also calculated AQI (Air Quality Index) to know how dangerous it is to health. The graph use circles to show the AQI for each city. Each circle represents a data point. The y-axis corresponds to the value of amount of pollution, when the circle is higher, the danger of air pollution to health is higher. The x-axis corresponds to time of the data. Users can drag the line to see the details of the data, and also see if the air quality cause danger to users. Four cities(Beijing, Shanghai, Tianjin and Chongqing) are plotted on the graph, to examine single city, people can also switch between view of Multiview and Singalview by clicking thebutton on the bottom right corner of the graph.
-        
+
         <br>
         We found that, generally speaking, air pollution in Beijing and Tianjin cause more health concerns than in the other two cities. We also found that, for each day, the air quality around 10pm is slightly worse than other time, considering the commuters might go back home from 6 to 8 pm, which caused lots of traffic, it is reasonable to see the difference, and the result also implies that the ownership of private vehicles might make the air pollution problem more serious.
       </p>
-      
+
       <script>
       // *****************************************
       // render chart
