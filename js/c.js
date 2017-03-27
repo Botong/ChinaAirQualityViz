@@ -993,8 +993,17 @@ function aSeaOfTweets() {
 		}
     }
 
+	// for(int i = 0; i<10; i++) {
+	// 	getData();
+	// }
+
     // getData();
-    setInterval(getData, 5000);
+	//if(totali < 30) {
+		setInterval(getData, 2000);
+	// } else {
+	// 	setInterval(getData, 5000);
+	// }
+
     function loop() {
 
         if (!pause)
