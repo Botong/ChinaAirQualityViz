@@ -911,51 +911,86 @@ function aSeaOfTweets() {
         d3.select("#footer").classed("overlay", false)
     })
 
+	var rows = [];
     function getData() {
 
         stats
             .style("top", "-50px")
             .select("div")
             .text("CONNECTED!")
+		if(rows.length == 0) {
+			d3.csv("../file/bigcity.csv", function(theRows) {
+			  rows = theRows;
+			});
+			totali ++;
+		} else {
+			var row = rows[totali]
+	        var aqi = row.pm25;
+	        var level = "Good";
+	        var description = "Air quality is considered satisfactory, and air pollution poses little or no risk";
+	        if (aqi > 50) {
+	          if (aqi <= 100) {
+	            level = "Moderate";
+	            description = "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
+	          } else if (aqi <= 150) {
+	            level = "Unhealthy for Sensitive Groups";
+	            description = "Members of sensitive groups may experience health effects. The general public is not likely to be affected.";
+	          } else if (aqi <= 200) {
+	            level = "Unhealthy";
+	            description = "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects";
+	          } else if (aqi <= 300) {
+	            level = "Very Unhealthy";
+	            description = "Health warnings of emergency conditions. The entire population is more likely to be affected.";
+	          } else {
+	            level = "Hazardous";
+	            description = "Health alert: everyone may experience more serious health effects";
+	          }
+	        }
+	        var t = {
+	         c:row.city.toLowerCase(),
+	         t:row.time*1000,
+	         d:description,
+	          id:Math.floor(Math.random()*2147483647),
+	          uid:Math.floor(Math.random()*2147483647),
+	          name:level,
+	          sname:row.city,
+	          f:aqi,
+	          l:'it',
+	          h:[],
+	          r_id:-1,
+	          lat:row.latitude,
+	          lon:row.longitude
+	        }
 
-        $.ajax({
-            url: "https://" + HOST + "/get",
-            data: {
-                i: totali
-            },
-            crossDomain: true,
-            success: function (result) {
-                var d = JSON.parse(result);
-                // console.log(d);
-                totali++;
-                var user1 = {
-                    id_str: "1000",
-                    id: 1000,
-                    name: "haha",
-                    screen_name: "hoho",
-                    followers_count: 1000
-                };
+			var d = t;
+			// console.log(d);
+			totali++;
+			var user1 = {
+				id_str: "1000",
+				id: 1000,
+				name: "haha",
+				screen_name: "hoho",
+				followers_count: 1000
+			};
 
-                now = Math.max(d.t, now),
-                    past = now - time_span;
-                now = (now / (1000 * 60 * 60 * 3)) * (1000 * 60 * 60 * 3);
-                past = (past / (1000 * 60 * 60 * 3)) * (1000 * 60 * 60 * 3);
-                time_scale.domain([past, now]);
-                reverse_scale.rangeRound([past, now]);
+			now = Math.max(d.t, now),
+				past = now - time_span;
+			now = (now / (1000 * 60 * 60 * 3)) * (1000 * 60 * 60 * 3);
+			past = (past / (1000 * 60 * 60 * 3)) * (1000 * 60 * 60 * 3);
+			time_scale.domain([past, now]);
+			reverse_scale.rangeRound([past, now]);
 
-                if (!pause) {
-                    tmp_time_scale.domain([past, now]);
-                    tmp_reverse_scale.range([past, now]);
-                }
-                if (topics.indexOf(d.c) > -1) {
-                    data.push(d);
-                    xs.push(0);
-                    ys.push(0);
-                }
-                loop();
-            }
-        });
-
+			if (!pause) {
+				tmp_time_scale.domain([past, now]);
+				tmp_reverse_scale.range([past, now]);
+			}
+			if (topics.indexOf(d.c) > -1) {
+				data.push(d);
+				xs.push(0);
+				ys.push(0);
+			}
+			loop();
+		}
     }
 
     // getData();
