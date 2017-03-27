@@ -847,7 +847,7 @@ function aSeaOfTweets() {
     // var socket = io.connect("ws://"+HOST+":"+PORT);
     // var socket = io.connect("ws://localhost:8080");
 
-    d3.json("https://" + HOST + "/data", function (error, json) {
+    d3.json("file/bigcity_initial.json", function (error, json) {
 
         if (error) {
             stats
@@ -922,7 +922,7 @@ function aSeaOfTweets() {
 			d3.csv("../file/bigcity.csv", function(theRows) {
 			  rows = theRows;
 			});
-			totali ++;
+			totali=11;
 		} else {
 			var row = rows[totali]
 	        var aqi = row.pm25;
@@ -999,7 +999,8 @@ function aSeaOfTweets() {
 
     // getData();
 	//if(totali < 30) {
-		setInterval(getData, 2000);
+        getData();
+		setInterval(getData, 3000);
 	// } else {
 	// 	setInterval(getData, 5000);
 	// }
